@@ -1,0 +1,31 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="customerDetailId" [value]="service.formData.customer_ID">
+    <div class="row mb-3">
+        <div class="col-xs-12 col-md-6">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" placeholder="First Name" name="firstName"
+                #firstName="ngModel" [(ngModel)]="service.formData.first_Name" pattern="[A-Za-z ]*"
+                [class.invalid]="firstName.invalid && firstName.touched" required>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" placeholder="Last Name" name="lastName"
+                #lastName="ngModel" [(ngModel)]="service.formData.last_Name"
+                [class.invalid]="lastName.invalid && lastName.touched" pattern="[A-Za-z ]*" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" placeholder="Email Name" name="email"
+                #email="ngModel" [(ngModel)]="service.formData.email"
+                [class.invalid]="email.invalid && email.touched && email.errors?.['email']" email="true" required>
+            <div class="text-danger" *ngIf="email.errors?.['email']">Primary email address is not valid.</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+        </div>
+    </div>
+</form>

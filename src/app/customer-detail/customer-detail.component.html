@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3 py-4">
+            <h1>Customer Detail Page</h1>
+        </div>
+    </div>
+    <div class="row g-5">
+        <div class="col-xs-12 col-md-5">
+            <app-customer-detail-form></app-customer-detail-form>
+        </div>
+        <div class="col-xs-12 col-md-7">
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cd of service.customerList, index as i">
+                        <td scope="row">{{ i + 1 }}</td>
+                        <td scope="row">
+                            <a routerLink="/orders/{{ cd.customer_ID }}">
+                                {{ cd.first_Name }} {{ cd.last_Name }}
+                            </a>
+                        </td>
+                        <td scope="row">{{ cd.email }}</td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-link" (click)="onDelete(cd.customer_ID)">
+                                <i class="far fa-trash-alt fa-lg text-danger"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

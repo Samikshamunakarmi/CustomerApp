@@ -1,0 +1,16 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="productDetailId" [value]="service.formData.product_ID">
+    <div class="row mb-3">
+        <div class="col-12">
+            <label for="ProductName">Product Name</label>
+            <input type="text" class="form-control" placeholder="Product Name" name="ProductName"
+                #ProductName="ngModel" [(ngModel)]="service.formData.product_Name"
+                [class.invalid]="ProductName.invalid && ProductName.touched" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3 py-4">
+            <h1>Product Detail Page</h1>
+        </div>
+    </div>
+    <div class="row g-5">
+        <div class="col-xs-12 col-md-5">
+            <app-product-detail-form></app-product-detail-form>
+        </div>
+        <div class="col-xs-12 col-md-7">
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cd of service.productList, index as i">
+                        <td scope="row">{{ i + 1 }}</td>
+                        <td scope="row">
+                            {{ cd.product_Name }}
+                        </td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-link" (click)="onDelete(cd.product_ID)">
+                                <i class="far fa-trash-alt fa-lg text-danger"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
